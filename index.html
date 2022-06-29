@@ -8,34 +8,28 @@
     <link rel="stylesheet" href="/assets/style.css" />
   </head>
   <body>
-    <div class="notes" id="app">
-      <div class="notes__sidebar">
+    <div class="notes_container" id="app">
+      <div class="notes_sideview">
         <button
-          class="notes__add"
+          class="add_notes"
           id="add_btn"
           onclick="addNote()"
           type="button"
         >
           Add Note
         </button>
-        <div class="notes__list">
-          <div class="notes__list-item--selected">
-            <div class="notes__small-title">Lecture Notes</div>
-            <div class="notes__small-body">I learnt nothing today.</div>
-            <div class="notes__small-updated">Thursday 3:30pm</div>
-          </div>
-        </div>
+        <div class="notes_list" id="notes_list"></div>
       </div>
-      <div class="notes__preview" id="notes">
+      <div class="notes_preview" id="notes">
         <input
-          class="notes__title"
-          id="notes__title"
+          class="notes_title"
+          id="notes_title"
           type="text"
           placeholder="Enter a title..."
         />
         <textarea
-          class="notes__body"
-          id="notes__text"
+          class="notes_body"
+          id="notes_text"
           placeholder="Write your notes here!"
         ></textarea>
       </div>
