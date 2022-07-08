@@ -6,21 +6,55 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Notes App</title>
     <link rel="stylesheet" href="/assets/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    />
   </head>
   <body>
     <div class="notes_container" id="app">
       <div class="notes_sideview">
-        <button
-          class="add_notes"
-          id="add_btn"
-          onclick="addNote()"
-          type="button"
-        >
-          Add Note
-        </button>
+        <div class="search_box">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <!-- <img
+            src="/assets/images/search_icon.png"
+            alt="search_icon"
+            class="search-icon"
+          /> -->
+          <input
+            type="search"
+            placeholder="Search Notes..."
+            id="search_notes"
+            onkeyup="searchNotes()"
+          />
+        </div>
+        <p id="add_note_text">Add Notes Here...</p>
+        <p id="totalNotesQty" style="display: inline-flex; margin: 0px">0</p>
         <div class="notes_list" id="notes_list"></div>
       </div>
       <div class="notes_preview" id="notes">
+        <div id="heading_btn">
+          <h1>Notes Keeping App</h1>
+          <div>
+            <i class="fa-solid fa-circle-half-stroke"></i>
+            <button
+              class="add_notes"
+              id="add_btn"
+              onclick="addNote()"
+              type="button"
+            >
+              <i
+                class="fa-solid fa-circle-plus"
+                style="padding-left: 0px; color: white; font-size: 20px"
+              ></i>
+              <!-- <img
+              src="/assets/images/add.png"
+              alt="add_btn_icon"
+              id="add_btn_icon"
+            /> -->
+            </button>
+          </div>
+        </div>
         <input
           class="notes_title"
           id="notes_title"
@@ -35,5 +69,5 @@
       </div>
     </div>
   </body>
-  <script src="/assets/main.js"></script>
+  <script src="./assets/main.js"></script>
 </html>
