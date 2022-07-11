@@ -92,21 +92,23 @@ function currentDate() {
 function addNoteToScreen(title, description, id) {
   document.getElementById("add_note_text").style.display = "none";
   const divElem = document.createElement("div");
+
   // edit button operation
   let editButtonDiv = document.createElement("div");
   editButtonDiv.innerHTML = `<i class="fa-regular fa-pen-to-square"></i>`;
   editButtonDiv.addEventListener("click", () => {
-    return editNote(title, description);
+    return editNote(title, description, id);
   });
   // edit button operation end
 
   // delete button operation
-
   let deleteButtonDiv = document.createElement("div");
-  deleteButtonDiv.innerHTML = `<i class="fa-regular fa-trash-can" onclick="deleteNote(${id})"></i>`;
-  // deleteButtonDiv.addEventListener("click", () => {
-  //   return;
-  // });
+  deleteButtonDiv.innerHTML = `<i class="fa-regular fa-trash-can"></i>`;
+  deleteButtonDiv.addEventListener("click", () => {
+    return deleteNote(id);
+  });
+  // delete button operation end
+
   divElem.innerHTML = `<div class="notes_list_items">
   <div class= "edit_delete">
   <div id="editNote"></div>
@@ -132,31 +134,21 @@ function addNoteToScreen(title, description, id) {
 }
 
 // Function to edit the notes.
-// function editNote(y) {
-//   console.log("LN121", y);
-//   let noteTitle = document.getElementById("notes_title");
-//   let noteDescription = document.getElementById("notes_text");
-//   notes = JSON.parse(getData("notes"));
-//   if (y !== null && y !== undefined) {
-//     let currentElem = notes.find((item) => item.noteId === y);
-//     const { title, description } = currentElem;
-//     console.log("LN129", currentElem);
-//     noteTitle.value = title;
-//     noteDescription.value = description;
-//   }
-// }
 
-function editNote(title, description) {
+function editNote(title, description, id) {
   let noteTitle = document.getElementById("notes_title");
   let noteDescription = document.getElementById("notes_text");
   noteTitle.value = title;
   noteDescription.value = description;
+  deleteNote(id);
 }
+
 // Function to delete the notes.
 
 function deleteNote(x) {
   let notes = JSON.parse(getData("notes"));
-  notes.splice(x, 1);
+  let deleteElem = notes.findIndex((deleteId) => deleteId.noteId === x);
+  notes.splice(deleteElem, 1);
   setData("notes", JSON.stringify(notes));
   showNotes();
 }
@@ -166,4 +158,20 @@ function deleteNote(x) {
 function searchNotes() {
   let notes = JSON.parse(getData("notes"));
   // console.log("LN132", notes);
+}
+
+// Function dark theme
+
+function darkModeIcon() {
+  const darkModeIcon = document.querySelector(".darkMode");
+  darkModeIcon.addEventListener(("onmouse", () => {}));
+}
+
+function darkTheme() {
+  const body = document.querySelector("*");
+  body.classList.toggle("darkMode");
+  const searchBox = document.querySelector(".search_box");
+  searchBox.classList.toggle("darkMode");
+  const addBtn = document.getElementById("add_btn");
+  addBtn.classList.toggle("darkMode");
 }

@@ -5,6 +5,7 @@ body {
 }
 * {
   font-family: sans-serif;
+  background-color: #ebeef1;
 }
 
 .notes_container {
@@ -47,6 +48,7 @@ body {
   position: relative;
   right: 35px;
 }
+
 .search_box {
   display: flex;
   align-items: center;
@@ -54,40 +56,48 @@ body {
   margin-bottom: 35px;
   padding-right: 20px;
   gap: 8px;
-  box-shadow: 0 1px 6px 0 rgba(201, 201, 201);
-  background-color: white;
+  box-shadow: -1px -1px 0px 1px white, 2px 2px 12px -5px black;
+  /* background-color: #ebeef1; */
 }
+
 #search_notes {
   width: 85%;
   height: 35px;
   border: none;
   outline: none;
+  position: relative;
+  left: 12px;
+  border-radius: 20px;
 }
-.fa-solid {
+
+.search_box > .fa-solid {
   padding-left: 13px;
   color: lightgray;
+  border-radius: 15px;
 }
+
 /* .search-icon {
   height: 20px;
   padding-left: 12px;
 } */
+
 .add_notes:hover {
   background: #389bd9;
 }
 
 .notes_list_items {
-  background: #eeeeee;
+  /* background: #eeeeee; */
   border-radius: 7px;
   font-weight: bold;
   margin-top: 15px;
   transition: 0.5s;
-  background-color: whitesmoke;
+  /* background-color: whitesmoke; */
   height: 8rem;
+  box-shadow: -1px -1px 1px #ffffff, 1px 1px 2px #000000;
 }
 
 .notes_list_items:hover {
   cursor: pointer;
-  /* transform: scale(1.05); */
 }
 
 .notes_view_title,
@@ -99,6 +109,7 @@ body {
   font-size: 1.2em;
   overflow: hidden;
   text-overflow: ellipsis;
+  border-radius: 12px;
 }
 
 .notes_view_body {
@@ -124,8 +135,8 @@ body {
 }
 
 .edit_delete > i:hover {
-  background-color: lightgrey;
-  border-radius: 50%;
+  /* background-color: lightgrey;
+  border-radius: 50%; */
 }
 
 .notes_view_updates {
@@ -168,11 +179,12 @@ h1 {
 
 .notes_title,
 .notes_body {
-  border: 1px solid lightgray;
+  border: none;
   padding: 15px;
   border-radius: 10px;
   outline: none;
-  width: 80%;
+  width: 100%;
+  box-shadow: -1px -1px 1px white, 2px 2px 13px -5px black;
 }
 
 .notes_title {
@@ -186,4 +198,24 @@ h1 {
   line-height: 1.5;
   margin-top: 2em;
   resize: none;
+}
+
+.darkMode * {
+  font-family: sans-serif;
+  background-color: #222f3e;
+  color: white;
+}
+.darkMode .search_box {
+  box-shadow: -1px -1px 10px -4px white, 2px 2px 29px -5px black;
+}
+.darkMode #add_btn {
+  background: #008cba;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  height: 65px;
+  width: 65px;
+}
+.darkMode #add_btn:hover {
+  background: #389bd9;
 }
