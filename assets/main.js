@@ -140,7 +140,7 @@ function editNote(title, description, id) {
   let noteDescription = document.getElementById("notes_text");
   noteTitle.value = title;
   noteDescription.value = description;
-  deleteNote(id);
+  // deleteNote(id);
 }
 
 // Function to delete the notes.
@@ -156,8 +156,15 @@ function deleteNote(x) {
 // Function to search notes
 
 function searchNotes() {
+  let searchWord = document.getElementById("search_notes").value.toUpperCase();
+  // console.log(searchWord);
   let notes = JSON.parse(getData("notes"));
-  // console.log("LN132", notes);
+  notes.forEach((element) => {
+    let isVisible =
+      element.title.toUpperCase().includes(searchWord) ||
+      element.description.toUpperCase().includes(searchWord);
+    notes.element.classList.toggle("hide", !isVisible);
+  });
 }
 
 // Function dark theme
