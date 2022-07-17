@@ -12,10 +12,32 @@ body {
   height: 100%;
   /* background-color: cadetblue; */
 }
+
 #add_note_text {
   color: silver;
   text-align: center;
   font-size: 1.5rem;
+}
+
+.bookmark_icons {
+  box-shadow: 2px 3px 0px 0px #899599;
+  background: linear-gradient(to bottom, #ededed 5%, #bab1ba 100%);
+  border-radius: 15px;
+  border: 1px solid #d6bcd6;
+  cursor: pointer;
+  color: lightslategray;
+  font-size: 14px;
+  padding: 0px 4px;
+  text-decoration: none;
+  text-shadow: 0px 1px 0px #e1e2ed;
+}
+.bookmark_icons:hover {
+  background: linear-gradient(to bottom, #bab1ba 5%, #ededed 100%);
+  background-color: #bab1ba;
+}
+.bookmark_icons:active {
+  position: relative;
+  top: 1px;
 }
 
 .notes_qty_all_bookmark {
@@ -43,11 +65,11 @@ body {
 }
 
 .add_notes_btn {
-  box-shadow: 3px 4px 0px 0px #8a2a21;
-  background: linear-gradient(to bottom, #c62d1f 5%, #f24437 100%);
-  background-color: #c62d1f;
+  box-shadow: 3px 4px 0px 0px #0a4087;
+  background: linear-gradient(to bottom, #275da6 5%, #4b78b2 100%);
+  background-color: #04387d;
   border-radius: 18px;
-  border: 1px solid #d02718;
+  border: 1px solid #183e71;
   display: inline-block;
   cursor: pointer;
   color: #ffffff;
@@ -55,11 +77,11 @@ body {
   font-size: 17px;
   padding: 7px 25px;
   text-decoration: none;
-  text-shadow: 0px 1px 0px #810e05;
+  text-shadow: 0px 1px 0px #132d50;
 }
 .add_notes_btn:hover {
-  background: linear-gradient(to bottom, #f24437 5%, #c62d1f 100%);
-  background-color: #f24437;
+  background: linear-gradient(to bottom, #277ae8 5%, #2e5e9d 100%);
+  background-color: #04387d;
 }
 .add_notes_btn:active {
   position: relative;
@@ -78,7 +100,7 @@ body {
 } */
 
 .fa-circle-half-stroke {
-  color: black !important;
+  color: black;
   font-size: 25px;
   position: relative;
   right: 35px;
@@ -122,8 +144,13 @@ body {
   font-weight: bold;
   margin-top: 15px;
   height: 8rem;
-  background: #efeeee;
-  box-shadow: 30px 30px 40px #cbcaca, 30px 30px 40px #ffffff;
+  background: linear-gradient(
+    135deg,
+    rgba(0, 0, 0, 0.22),
+    rgba(255, 255, 255, 0.25)
+  );
+  box-shadow: 7px 7px 9px 0 rgb(0 0 0 / 25%),
+    -8px -8px 12px 0 rgb(255 255 255 / 30%);
 }
 
 .notes_list_items:hover {
@@ -251,20 +278,26 @@ h1 {
   font-size: 40px;
 }
 
+.edit_btn_icn {
+  padding-left: 0px;
+  color: white;
+  font-size: 20px;
+}
+
 .notes_title,
 .notes_body {
-  border: none;
+  border: 1px solid lightgray;
   padding: 15px;
   border-radius: 10px;
   outline: none;
   width: 100%;
-  box-shadow: inset 6px 6px 10px 0 rgb(0 0 0 / 20%),
-    inset -6px -6px 10px 0 rgb(255 255 255 / 50%);
   background: linear-gradient(
     -45deg,
-    rgba(0, 0, 0, 0.2),
-    rgba(255, 255, 255, 0.3)
+    rgba(0, 0, 0, 0.22),
+    rgba(255, 255, 255, 0.25)
   );
+  box-shadow: 12px 12px 16px 0 rgba(0, 0, 0, 0.25),
+    -8px -8px 12px 0 rgba(255, 255, 255, 0.3);
 }
 
 .notes_title {
@@ -289,11 +322,11 @@ h1 {
   box-shadow: -1px -1px 10px -4px white, 2px 2px 29px -5px black;
 }
 .darkMode .add_notes_btn {
-  box-shadow: 3px 4px 0px 0px #8a2a21;
-  background: linear-gradient(to bottom, #c62d1f 5%, #f24437 100%);
-  background-color: #c62d1f;
+  box-shadow: 3px 4px 0px 0px #0a4087;
+  background: linear-gradient(to bottom, #275da6 5%, #4b78b2 100%);
+  background-color: #04387d;
   border-radius: 18px;
-  border: 1px solid #d02718;
+  border: 1px solid #183e71;
   display: inline-block;
   cursor: pointer;
   color: #ffffff;
@@ -301,24 +334,51 @@ h1 {
   font-size: 17px;
   padding: 7px 25px;
   text-decoration: none;
-  text-shadow: 0px 1px 0px #810e05;
+  text-shadow: 0px 1px 0px #132d50;
 }
 
 .darkMode .add_notes_btn:hover {
-  background: linear-gradient(to bottom, #f24437 5%, #c62d1f 100%);
-  background-color: #f24437;
+  background: linear-gradient(to bottom, #277ae8 5%, #2e5e9d 100%);
+  background-color: #04387d;
 }
 
 .darkMode .add_notes_btn:active {
   position: relative;
   top: 1px;
 }
+
+.darkMode .edit_btn_icn {
+  padding-left: 0px;
+  color: white;
+  font-size: 20px;
+  background: none;
+}
+
+.darkMode .fa-circle-half-stroke {
+  color: white;
+  font-size: 25px;
+  position: relative;
+  right: 35px;
+}
+
 .darkMode .notes_title,
 .notes_body {
-  border: none;
+  /* border: none; */
   padding: 15px;
   border-radius: 10px;
   outline: none;
   width: 100%;
-  /* box-shadow: -1px -1px 10px -4px white, 2px 2px 29px -5px black; */
+}
+.darkMode .notes_title,
+.notes_body::placeholder {
+  /* color: white; */
+}
+.darkMode .notes_list_items {
+  /* border-radius: 7px;
+  border: 1px solid lightgray;
+  font-weight: bold;
+  margin-top: 15px;
+  height: 8rem;
+  box-shadow: 7px 7px 12px 0 rgb(0 0 0 / 25%),
+    -1px -1px 0px 0 rgb(255 255 255 / 30%); */
 }

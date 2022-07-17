@@ -235,11 +235,19 @@ function darkMode() {
   body.classList.toggle("darkMode");
   const searchBox = document.querySelector(".search_box");
   searchBox.classList.toggle("darkMode");
+  // const noteCard = document.querySelector("notes_list_items");
+  // noteCard.classList.toggle("darkMode");
   const addBtn = document.getElementById("add_btn");
   addBtn.classList.toggle("darkMode");
-  const text = document.querySelector("#notes_title, #notes_text");
-  text.classList.toggle("darkMode");
-  themeStatus = JSON.parse(getData("themeStatus")) || null;
+  const addBtnIcon = document.querySelector(".edit_btn_icn");
+  addBtnIcon.classList.toggle("darkMode");
+  const darkThemeIcon = document.querySelector(".fa-circle-half-stroke");
+  darkThemeIcon.classList.toggle("darkMode");
+  const noteTitleText = document.querySelector("#notes_title");
+  noteTitleText.classList.toggle("darkMode");
+  const noteDescriptionText = document.querySelector("#notes_text");
+  noteDescriptionText.classList.toggle("darkMode");
+  // themeStatus = JSON.parse(getData("themeStatus")) || "";
   if (themeStatus) {
     themeStatus = false;
   } else {
@@ -249,7 +257,7 @@ function darkMode() {
 }
 
 (() => {
-  let themeStatus = JSON.parse(getData("themeStatus")) || null;
+  let themeStatus = JSON.parse(getData("themeStatus")) || "";
   if (themeStatus) {
     darkMode();
   }
