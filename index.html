@@ -24,32 +24,42 @@
           />
         </div>
         <p id="add_note_text">Add Notes Here...</p>
-        <p id="totalNotesQty" style="display: inline-flex; margin: 0px">0</p>
+        <div class="notes_qty_all_bookmark">
+          <p
+            id="totalNotesQty"
+            style="display: inline-flex; margin: 0px; align-items: center"
+          >
+            0
+          </p>
+          <img
+            src="/assets/images/bookmark.png"
+            alt="all_bookmark_img"
+            class="total_bookmark_icon"
+          />
+        </div>
         <div class="notes_list" id="notes_list"></div>
       </div>
       <div class="notes_preview" id="notes">
         <div id="heading_btn">
-          <h1>Notes Keeping App</h1>
+          <div class="logo_title">
+            <img src="/assets/images/note.png" alt="main_logo" />
+            <h1>Keep Notes</h1>
+          </div>
           <div>
             <i
               class="darkMode fa-solid fa-circle-half-stroke"
-              onclick="darkTheme()"
+              onclick="darkMode()"
             ></i>
             <button
-              class="add_notes"
+              class="add_notes_btn"
               id="add_btn"
               onclick="addNote()"
               type="button"
             >
               <i
-                class="darkMode fa-solid fa-circle-plus"
+                class="darkMode_icon fa-solid fa-circle-plus"
                 ;
-                style="
-                  padding-left: 0px;
-                  color: white;
-                  font-size: 20px;
-                  background-color: inherit;
-                "
+                style="padding-left: 0px; color: white; font-size: 20px"
               ></i>
             </button>
           </div>

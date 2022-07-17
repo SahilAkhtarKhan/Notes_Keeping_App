@@ -5,7 +5,6 @@ body {
 }
 * {
   font-family: sans-serif;
-  background-color: #ebeef1;
 }
 
 .notes_container {
@@ -18,10 +17,21 @@ body {
   text-align: center;
   font-size: 1.5rem;
 }
+
+.notes_qty_all_bookmark {
+  display: flex;
+  justify-content: space-between;
+}
+
+.total_bookmark_icon {
+  height: 30px;
+}
+
 #totalNotesQty::after {
   content: " Notes";
   padding-left: 5px;
 }
+
 .notes_sideview {
   border-right: 2px solid #dddddd;
   flex-shrink: 0;
@@ -29,19 +39,44 @@ body {
   overflow-x: hidden;
   padding: 3em 1em 1em 1em;
   width: 300px;
+  background: #efeeee;
 }
 
-.add_notes {
+.add_notes_btn {
+  box-shadow: 3px 4px 0px 0px #8a2a21;
+  background: linear-gradient(to bottom, #c62d1f 5%, #f24437 100%);
+  background-color: #c62d1f;
+  border-radius: 18px;
+  border: 1px solid #d02718;
+  display: inline-block;
+  cursor: pointer;
+  color: #ffffff;
+  font-family: Arial;
+  font-size: 17px;
+  padding: 7px 25px;
+  text-decoration: none;
+  text-shadow: 0px 1px 0px #810e05;
+}
+.add_notes_btn:hover {
+  background: linear-gradient(to bottom, #f24437 5%, #c62d1f 100%);
+  background-color: #f24437;
+}
+.add_notes_btn:active {
+  position: relative;
+  top: 1px;
+}
+/* 
+.add_notes_btn {
   background: #008cba;
   border: none;
   border-radius: 50%;
   cursor: pointer;
   height: 65px;
   width: 65px;
-}
-
-/* #add_btn::before {
+  box-shadow: inset 6px 6px 10px 0 rgba(0, 0, 0, 0.2),
+    inset -6px -6px 10px 0 rgba(255, 255, 255, 0.5);
 } */
+
 .fa-circle-half-stroke {
   color: black !important;
   font-size: 25px;
@@ -57,7 +92,7 @@ body {
   padding-right: 20px;
   gap: 8px;
   box-shadow: -1px -1px 0px 1px white, 2px 2px 12px -5px black;
-  /* background-color: #ebeef1; */
+  background-color: white;
 }
 
 #search_notes {
@@ -68,6 +103,7 @@ body {
   position: relative;
   left: 12px;
   border-radius: 20px;
+  /* background-color: ; */
 }
 
 .search_box > .fa-solid {
@@ -76,24 +112,18 @@ body {
   border-radius: 15px;
 }
 
-/* .search-icon {
-  height: 20px;
-  padding-left: 12px;
-} */
-
 .add_notes:hover {
   background: #389bd9;
 }
 
 .notes_list_items {
-  /* background: #eeeeee; */
   border-radius: 7px;
+  border: 1px solid lightgray;
   font-weight: bold;
   margin-top: 15px;
-  transition: 0.5s;
-  /* background-color: whitesmoke; */
   height: 8rem;
-  box-shadow: -1px -1px 1px #ffffff, 1px 1px 2px #000000;
+  background: #efeeee;
+  box-shadow: 30px 30px 40px #cbcaca, 30px 30px 40px #ffffff;
 }
 
 .notes_list_items:hover {
@@ -109,6 +139,7 @@ body {
   font-size: 1.2em;
   overflow: hidden;
   text-overflow: ellipsis;
+  white-space: nowrap;
   border-radius: 12px;
 }
 
@@ -116,9 +147,53 @@ body {
   padding: 0 10px;
   overflow: hidden;
   text-overflow: ellipsis;
+  white-space: nowrap;
   font-size: small;
   font-weight: 100;
-  color: gray;
+}
+
+.edit_btn {
+  box-shadow: 2px 3px 0px 0px #899599;
+  background: linear-gradient(to bottom, #ededed 5%, #bab1ba 100%);
+  border-radius: 15px;
+  border: 1px solid #d6bcd6;
+  cursor: pointer;
+  color: lightslategray;
+  font-size: 14px;
+  padding: 0px 4px;
+  text-decoration: none;
+  text-shadow: 0px 1px 0px #e1e2ed;
+}
+.edit_btn:hover {
+  background: linear-gradient(to bottom, #bab1ba 5%, #ededed 100%);
+  background-color: #bab1ba;
+}
+.edit_btn:active {
+  position: relative;
+  top: 1px;
+}
+
+.delete_btn {
+  box-shadow: 2px 3px 0px 0px #899599;
+  background: linear-gradient(to bottom, #ededed 5%, #bab1ba 100%);
+  border-radius: 15px;
+  border: 1px solid #d6bcd6;
+  /* display: inline-block; */
+  cursor: pointer;
+  color: lightslategray;
+  /* font-family: Arial; */
+  font-size: 14px;
+  padding: 0px 5px;
+  text-decoration: none;
+  text-shadow: 0px 1px 0px #e1e2ed;
+}
+.delete_btn:hover {
+  background: linear-gradient(to bottom, #bab1ba 5%, #ededed 100%);
+  background-color: #bab1ba;
+}
+.delete_btn:active {
+  position: relative;
+  top: 1px;
 }
 
 .edit_delete {
@@ -126,28 +201,15 @@ body {
   flex-direction: row;
   gap: 12px;
   position: relative;
-  right: 12px;
+  right: 7px;
   float: right;
-  padding-top: 8px;
-  color: lightslategray;
-  /* height: 30px;
-  width: 30px; */
-}
-
-.edit_delete > i:hover {
-  /* background-color: lightgrey;
-  border-radius: 50%; */
+  padding: 4px 0 0 10px;
 }
 
 .notes_view_updates {
-  color: #aaaaaa;
   font-style: italic;
-  /* position: relative;
-  right: 12px;
-  top: 50px; */
   font-size: 12px;
   font-weight: 100;
-  /* float: right; */
 }
 
 .note_mark_date {
@@ -164,11 +226,23 @@ body {
   flex-direction: column;
   padding: 2em 3em;
   flex-grow: 1;
+  background: #efeeee;
+}
+
+.logo_title {
+  display: flex;
+  justify-content: center;
+  gap: 35px;
 }
 
 #heading_btn {
   display: inline-flex;
-  column-gap: 32rem;
+  column-gap: 35rem;
+  margin-bottom: 35px;
+}
+#heading_btn,
+img {
+  height: 48px;
 }
 
 #heading_btn,
@@ -184,7 +258,13 @@ h1 {
   border-radius: 10px;
   outline: none;
   width: 100%;
-  box-shadow: -1px -1px 1px white, 2px 2px 13px -5px black;
+  box-shadow: inset 6px 6px 10px 0 rgb(0 0 0 / 20%),
+    inset -6px -6px 10px 0 rgb(255 255 255 / 50%);
+  background: linear-gradient(
+    -45deg,
+    rgba(0, 0, 0, 0.2),
+    rgba(255, 255, 255, 0.3)
+  );
 }
 
 .notes_title {
@@ -208,14 +288,37 @@ h1 {
 .darkMode .search_box {
   box-shadow: -1px -1px 10px -4px white, 2px 2px 29px -5px black;
 }
-.darkMode #add_btn {
-  background: #008cba;
-  border: none;
-  border-radius: 50%;
+.darkMode .add_notes_btn {
+  box-shadow: 3px 4px 0px 0px #8a2a21;
+  background: linear-gradient(to bottom, #c62d1f 5%, #f24437 100%);
+  background-color: #c62d1f;
+  border-radius: 18px;
+  border: 1px solid #d02718;
+  display: inline-block;
   cursor: pointer;
-  height: 65px;
-  width: 65px;
+  color: #ffffff;
+  font-family: Arial;
+  font-size: 17px;
+  padding: 7px 25px;
+  text-decoration: none;
+  text-shadow: 0px 1px 0px #810e05;
 }
-.darkMode #add_btn:hover {
-  background: #389bd9;
+
+.darkMode .add_notes_btn:hover {
+  background: linear-gradient(to bottom, #f24437 5%, #c62d1f 100%);
+  background-color: #f24437;
+}
+
+.darkMode .add_notes_btn:active {
+  position: relative;
+  top: 1px;
+}
+.darkMode .notes_title,
+.notes_body {
+  border: none;
+  padding: 15px;
+  border-radius: 10px;
+  outline: none;
+  width: 100%;
+  /* box-shadow: -1px -1px 10px -4px white, 2px 2px 29px -5px black; */
 }
