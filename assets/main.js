@@ -1,5 +1,6 @@
 // Function for adding the notes to local storage.
 
+// debugger;
 function addNote() {
   const noteTitle = document.getElementById("notes_title")?.value;
   const noteDescription = document.getElementById("notes_text")?.value;
@@ -83,7 +84,12 @@ function showNotes(notes) {
   const totalNotes = notes.length;
   totalNotesQty.innerText = `${totalNotes}`;
 }
-// showNotes();
+let defaultNotes = JSON.parse(getData("notes"));
+// if (section == "bookmark") {
+//   bookmarkNoteList();
+// } else {
+showNotes(defaultNotes);
+// }
 
 // Function for current date.
 
@@ -115,15 +121,18 @@ function addNoteToScreen(title, description, id) {
   deleteButtonDiv.addEventListener("click", () => {
     return deleteNote(id);
   });
+
   // delete button operation end
 
-  // DakTheme
+  // bookmark
 
-  // let darkModeActive = document.querySelector(".darkMode");
-  // darkModeActive.addEventListener("click", () => {
-  //   return darkMode(id);
-  // });
-
+  let bookmarkButtonDiv = document.createElement("i");
+  bookmarkButtonDiv.className = "fa-regular fa-bookmark";
+  bookmarkButtonDiv.id = "regular_bookmark";
+  bookmarkButtonDiv.addEventListener("click", () => {
+    return bookmarkIconVisiblity(id, bookmarkButtonDiv);
+  });
+  checkBookmarkStatus(id, bookmarkButtonDiv);
   divElem.innerHTML = `<div class="notes_list_items">
   <div class= "edit_delete">
   <div id="editNote"></div>
@@ -136,9 +145,7 @@ function addNoteToScreen(title, description, id) {
       ${description}
     </div>
     <div class="note_mark_date">
-    <div class="bookmark_icons">
-    <i class="fa-regular fa-bookmark" onclick="bookmarkIconVisiblity(${id})" id="regular_bookmark" style="position: absolute"></i>
-    <i class="fa-solid fa-bookmark" onclick="bookmarkIconVisiblity(${id}) id="solid_bookmark"></i>
+    <div id="bookmarkIcons">
     </div>
     <div class="notes_view_updates" id="view_updated">
       ${currentDate()}
@@ -147,31 +154,53 @@ function addNoteToScreen(title, description, id) {
   </div>`;
   divElem.querySelector("#editNote").appendChild(editButtonDiv);
   divElem.querySelector("#deleteNote").appendChild(deleteButtonDiv);
+  divElem.querySelector("#bookmarkIcons").appendChild(bookmarkButtonDiv);
   totalNotesQty.innerText = `${Number(totalNotesQty.innerText) + 1}`;
   notesContainer.prepend(divElem);
 }
 
 // Bookmark functionality
 
-function bookmarkIconVisiblity(idBookmark) {
-  console.log("LN148", idBookmark);
-  let regularBookmark = document.getElementById("regular_bookmark");
-  let solidBookmark = document.getElementById("solid_bookmark");
+function bookmarkIconVisiblity(bookmarkId, bookmarkButtonDiv) {
   let notes = JSON.parse(getData("notes"));
   for (key of notes) {
-    console.log("LN147", idBookmark, key.noteId);
-    if (idBookmark == key.noteId) {
-      if (key.bookmarkStatus) {
+    if (key.noteId == bookmarkId) {
+      if (key.bookmarkStatus == true) {
         key.bookmarkStatus = false;
-        solidBookmark.style.display = "none";
+        bookmarkButtonDiv.style.color = "black";
       } else {
         key.bookmarkStatus = true;
-        regularBookmark.style.visibility = "hidden";
+        bookmarkButtonDiv.style.color = "green";
       }
     }
   }
   setData("notes", JSON.stringify(notes));
-  console.log("LN159", key.bookmarkStatus);
+  // bookmarkNoteList(bookmarkId);
+}
+
+function bookmarkNoteList() {
+  let section = "bookmark";
+  let bookmarkedList = [];
+  let notes = JSON.parse(getData("notes"));
+  for (let noteElement of notes) {
+    if (noteElement.bookmarkStatus == true) {
+      bookmarkedList.push(noteElement);
+    }
+  }
+  showNotes(bookmarkedList);
+}
+
+function checkBookmarkStatus(id, bookmarkButtonDiv) {
+  let notes = JSON.parse(getData("notes"));
+  for (let noteElement of notes) {
+    if (noteElement.noteId == id) {
+      if (noteElement.bookmarkStatus == true) {
+        return (bookmarkButtonDiv.style.color = "green");
+      } else {
+        return (bookmarkButtonDiv.style.color = "black");
+      }
+    }
+  }
 }
 
 // Bookmark functionality ended
@@ -207,6 +236,9 @@ function deleteNoteConfirmation(y) {
   setData("notes", JSON.stringify(notes));
   document.getElementById(y).remove();
   totalNotesQty.innerText = totalNotesQty.innerText - 1;
+  if (notes == "") {
+    document.getElementById("add_note_text").style.display = "block";
+  }
 }
 
 // Function to search notes
@@ -225,7 +257,6 @@ function searchNotes() {
   }
   showNotes(filteredList);
 }
-searchNotes();
 
 // Function dark theme
 
