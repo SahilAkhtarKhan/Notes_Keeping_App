@@ -10,6 +10,12 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@1,700&family=Lato&family=Open+Sans&family=Roboto:wght@300;400&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <div class="notes_container" id="app">
@@ -44,13 +50,10 @@
         <div id="heading_btn">
           <div class="logo_title">
             <img src="/assets/images/note.png" alt="main_logo" />
-            <h1>Keep Notes</h1>
+            <h1>Note Keep</h1>
           </div>
-          <div>
-            <i
-              class="darkMode_icon fa-solid fa-circle-half-stroke"
-              onclick="darkMode()"
-            ></i>
+          <div class="darkMode_icon_edit_btn">
+            <i class="darkMode_icon fa-solid fa-moon" onclick="darkMode()"></i>
             <button
               class="add_notes_btn"
               id="add_btn"

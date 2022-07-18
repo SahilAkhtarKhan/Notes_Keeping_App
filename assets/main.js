@@ -31,7 +31,7 @@ function addNote() {
     title: noteTitle,
     description: noteDescription,
     noteId: noteUniqueId(),
-    bookmarkStatus: "",
+    bookmarkStatus: false,
   });
   setData("notes", JSON.stringify(notes));
   addNoteToScreen(noteTitle, noteDescription, noteUniqueId());
@@ -108,7 +108,10 @@ function addNoteToScreen(title, description, id) {
   const divElem = document.createElement("div");
   divElem.id = id;
   // edit button operation
+
   let editButtonDiv = document.createElement("div");
+  editButtonDiv.className = "edit_button_div_class";
+  editButtonDiv.style.backgroundColor = "ghostwhite";
   editButtonDiv.innerHTML = `<i class="edit_btn fa-regular fa-pen-to-square"></i>`;
   editButtonDiv.addEventListener("click", () => {
     return editNote(title, description, id);
@@ -117,6 +120,8 @@ function addNoteToScreen(title, description, id) {
 
   // delete button operation
   let deleteButtonDiv = document.createElement("div");
+  deleteButtonDiv.style.backgroundColor = "ghostwhite";
+
   deleteButtonDiv.innerHTML = `<i class="delete_btn fa-regular fa-trash-can"></i>`;
   deleteButtonDiv.addEventListener("click", () => {
     return deleteNote(id);
@@ -126,13 +131,15 @@ function addNoteToScreen(title, description, id) {
 
   // bookmark
 
-  let bookmarkButtonDiv = document.createElement("i");
-  bookmarkButtonDiv.className = "fa-regular fa-bookmark";
-  bookmarkButtonDiv.id = "regular_bookmark";
-  bookmarkButtonDiv.addEventListener("click", () => {
-    return bookmarkIconVisiblity(id, bookmarkButtonDiv);
+  let bookmarkDiv = document.createElement("i");
+  bookmarkDiv.className = "fa-regular fa-bookmark";
+  bookmarkDiv.id = "regular_bookmark";
+
+  bookmarkDiv.addEventListener("click", () => {
+    return bookmarkIconVisiblity(id, bookmarkDiv);
   });
-  checkBookmarkStatus(id, bookmarkButtonDiv);
+  checkBookmarkStatus(id, bookmarkDiv);
+
   divElem.innerHTML = `<div class="notes_list_items">
   <div class= "edit_delete">
   <div id="editNote"></div>
@@ -154,23 +161,24 @@ function addNoteToScreen(title, description, id) {
   </div>`;
   divElem.querySelector("#editNote").appendChild(editButtonDiv);
   divElem.querySelector("#deleteNote").appendChild(deleteButtonDiv);
-  divElem.querySelector("#bookmarkIcons").appendChild(bookmarkButtonDiv);
+  divElem.querySelector("#bookmarkIcons").appendChild(bookmarkDiv);
+  // divElem.querySelector("#bookmarkIcons").appendChild(bookmarkDivSolid);
   totalNotesQty.innerText = `${Number(totalNotesQty.innerText) + 1}`;
   notesContainer.prepend(divElem);
 }
 
 // Bookmark functionality
 
-function bookmarkIconVisiblity(bookmarkId, bookmarkButtonDiv) {
+function bookmarkIconVisiblity(bookmarkId, bookmarkDiv) {
   let notes = JSON.parse(getData("notes"));
   for (key of notes) {
     if (key.noteId == bookmarkId) {
       if (key.bookmarkStatus == true) {
         key.bookmarkStatus = false;
-        bookmarkButtonDiv.style.color = "black";
+        bookmarkDiv.className = "fa-regular fa-bookmark";
       } else {
         key.bookmarkStatus = true;
-        bookmarkButtonDiv.style.color = "green";
+        bookmarkDiv.className = "fa-solid fa-bookmark";
       }
     }
   }
@@ -178,9 +186,9 @@ function bookmarkIconVisiblity(bookmarkId, bookmarkButtonDiv) {
   // bookmarkNoteList(bookmarkId);
 }
 
+let bookmarkedList = [];
 function bookmarkNoteList() {
   let section = "bookmark";
-  let bookmarkedList = [];
   let notes = JSON.parse(getData("notes"));
   for (let noteElement of notes) {
     if (noteElement.bookmarkStatus == true) {
@@ -190,14 +198,14 @@ function bookmarkNoteList() {
   showNotes(bookmarkedList);
 }
 
-function checkBookmarkStatus(id, bookmarkButtonDiv) {
+function checkBookmarkStatus(id, bookmarkDiv) {
   let notes = JSON.parse(getData("notes"));
   for (let noteElement of notes) {
     if (noteElement.noteId == id) {
       if (noteElement.bookmarkStatus == true) {
-        return (bookmarkButtonDiv.style.color = "green");
+        return (bookmarkDiv.className = "fa-solid fa-bookmark");
       } else {
-        return (bookmarkButtonDiv.style.color = "black");
+        return (bookmarkDiv.className = "fa-regular fa-bookmark");
       }
     }
   }
@@ -260,19 +268,29 @@ function searchNotes() {
 
 // Function dark theme
 
-let themeStatus = "";
+let themeStatus = false;
 function darkMode() {
   const body = document.querySelector("*");
   body.classList.toggle("darkMode");
   const searchBox = document.querySelector(".search_box");
   searchBox.classList.toggle("darkMode");
-  // const noteCard = document.querySelector("notes_list_items");
-  // noteCard.classList.toggle("darkMode");
-  const addBtn = document.getElementById("add_btn");
-  addBtn.classList.toggle("darkMode");
+  const searchInputBox = document.querySelector("#search_notes");
+  searchInputBox.classList.toggle("darkMode");
+  const searchIcon = document.querySelector(".fa-magnifying-glass");
+  searchIcon.classList.toggle("darkMode");
+  const bookmarkIcon = document.querySelector("#bookmarkIcons");
+  bookmarkIcon.classList.toggle("darkMode");
+  const regularBookmark = document.querySelector("#regular_bookmark");
+  regularBookmark.classList.toggle("darkMode");
+  const editBtn = document.querySelector(".edit_button_div_class");
+  editBtn.classList.toggle("darkMode");
+  const noteCard = document.querySelector(".notes_list_items");
+  noteCard.classList.toggle("darkMode");
+  // const addBtn = document.getElementById("add_btn");
+  // addBtn.classList.toggle("darkMode");
   const addBtnIcon = document.querySelector(".edit_btn_icn");
   addBtnIcon.classList.toggle("darkMode");
-  const darkThemeIcon = document.querySelector(".fa-circle-half-stroke");
+  const darkThemeIcon = document.querySelector(".fa-moon");
   darkThemeIcon.classList.toggle("darkMode");
   const noteTitleText = document.querySelector("#notes_title");
   noteTitleText.classList.toggle("darkMode");
@@ -280,8 +298,10 @@ function darkMode() {
   noteDescriptionText.classList.toggle("darkMode");
   // themeStatus = JSON.parse(getData("themeStatus")) || "";
   if (themeStatus) {
+    console.log("LN291", themeStatus);
     themeStatus = false;
   } else {
+    console.log("LN294", themeStatus);
     themeStatus = true;
   }
   setData("themeStatus", JSON.stringify(themeStatus));

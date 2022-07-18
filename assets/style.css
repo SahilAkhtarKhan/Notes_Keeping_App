@@ -1,10 +1,55 @@
+/* Custom scrollbar css */
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: cadetblue #dfe9eb;
+}
+
+/* Chrome, Edge and Safari */
+*::-webkit-scrollbar {
+  width: 10px;
+  width: 10px;
+}
+*::-webkit-scrollbar-track {
+  border-radius: 5px;
+  background-color: #dfe9eb;
+}
+
+*::-webkit-scrollbar-track:hover {
+  background-color: #dfe9eb;
+}
+
+*::-webkit-scrollbar-track:active {
+  background-color: #dfe9eb;
+}
+
+*::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background-color: cadetblue;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background-color: cadetblue;
+}
+
+*::-webkit-scrollbar-thumb:active {
+  background-color: cadetblue;
+}
+
+/* custom scrollbar ended */
+
 html,
 body {
   height: 100%;
   margin: 0;
+  font-family: "Comic Neue", cursive;
+  /* font-family: "Lato", sans-serif; */
+  /* font-family: "Open Sans", sans-serif; */
+  /* font-family: "Roboto", sans-serif; */
 }
 * {
-  font-family: sans-serif;
+  font-family: "Comic Neue", cursive;
+  background-color: #a5c9ca;
 }
 
 .notes_container {
@@ -19,7 +64,12 @@ body {
   font-size: 1.5rem;
 }
 
-.bookmark_icons {
+#bookmarkIcons {
+  background-color: ghostwhite;
+}
+
+/* 
+#bookmarkIcons {
   box-shadow: 2px 3px 0px 0px #899599;
   background: linear-gradient(to bottom, #ededed 5%, #bab1ba 100%);
   border-radius: 15px;
@@ -31,11 +81,25 @@ body {
   text-decoration: none;
   text-shadow: 0px 1px 0px #e1e2ed;
 }
-.bookmark_icons:hover {
+#bookmarkIcons:hover {
   background: linear-gradient(to bottom, #bab1ba 5%, #ededed 100%);
   background-color: #bab1ba;
 }
-.bookmark_icons:active {
+#bookmarkIcons:active {
+  position: relative;
+  top: 1px;
+} */
+
+#regular_bookmark {
+  background-color: ghostwhite;
+}
+
+#regular_bookmark:hover {
+  background: linear-gradient(to bottom, #bab1ba 5%, #ededed 100%);
+  background-color: #bab1ba;
+}
+
+#regular_bookmark:active {
   position: relative;
   top: 1px;
 }
@@ -59,9 +123,8 @@ body {
   flex-shrink: 0;
   overflow-y: auto;
   overflow-x: hidden;
-  padding: 3em 1em 1em 1em;
+  padding: 2em 1em 1em 1em;
   width: 300px;
-  background: #efeeee;
 }
 
 .add_notes_btn {
@@ -87,17 +150,6 @@ body {
   position: relative;
   top: 1px;
 }
-/* 
-.add_notes_btn {
-  background: #008cba;
-  border: none;
-  border-radius: 50%;
-  cursor: pointer;
-  height: 65px;
-  width: 65px;
-  box-shadow: inset 6px 6px 10px 0 rgba(0, 0, 0, 0.2),
-    inset -6px -6px 10px 0 rgba(255, 255, 255, 0.5);
-} */
 
 .fa-circle-half-stroke {
   color: black;
@@ -110,11 +162,12 @@ body {
   display: flex;
   align-items: center;
   border-radius: 18px;
-  margin-bottom: 35px;
+  margin-bottom: 20px;
   padding-right: 20px;
   gap: 8px;
-  box-shadow: -1px -1px 0px 1px white, 2px 2px 12px -5px black;
   background-color: white;
+  box-shadow: 5px 5px 9px 0 rgb(0 0 0 / 25%),
+    -8px -8px 12px 0 rgb(255 255 255 / 30%);
 }
 
 #search_notes {
@@ -125,13 +178,14 @@ body {
   position: relative;
   left: 12px;
   border-radius: 20px;
-  /* background-color: ; */
+  background-color: white;
 }
 
-.search_box > .fa-solid {
+.search_box > .fa-magnifying-glass {
   padding-left: 13px;
   color: lightgray;
   border-radius: 15px;
+  background-color: white;
 }
 
 .add_notes:hover {
@@ -144,11 +198,7 @@ body {
   font-weight: bold;
   margin-top: 15px;
   height: 8rem;
-  background: linear-gradient(
-    135deg,
-    rgba(0, 0, 0, 0.22),
-    rgba(255, 255, 255, 0.25)
-  );
+  background: #f7f9f7;
   box-shadow: 7px 7px 9px 0 rgb(0 0 0 / 25%),
     -8px -8px 12px 0 rgb(255 255 255 / 30%);
 }
@@ -160,6 +210,7 @@ body {
 .notes_view_title,
 .notes_view_body {
   padding: 10px;
+  background: inherit;
 }
 
 .notes_view_title {
@@ -179,45 +230,55 @@ body {
   font-weight: 100;
 }
 
+.darkMode_icon {
+  font-size: 35px;
+}
+
+.darkMode_icon:active {
+  position: relative;
+  top: 2px;
+}
+
+.darkMode_icon_edit_btn {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+}
+
+.edit_button_div_class {
+  /* background-color: inherit; */
+}
+
 .edit_btn {
-  box-shadow: 2px 3px 0px 0px #899599;
-  background: linear-gradient(to bottom, #ededed 5%, #bab1ba 100%);
-  border-radius: 15px;
-  border: 1px solid #d6bcd6;
-  cursor: pointer;
-  color: lightslategray;
   font-size: 14px;
-  padding: 0px 4px;
   text-decoration: none;
   text-shadow: 0px 1px 0px #e1e2ed;
+  background: none;
 }
+
 .edit_btn:hover {
   background: linear-gradient(to bottom, #bab1ba 5%, #ededed 100%);
   background-color: #bab1ba;
 }
+
 .edit_btn:active {
   position: relative;
   top: 1px;
 }
 
 .delete_btn {
-  box-shadow: 2px 3px 0px 0px #899599;
-  background: linear-gradient(to bottom, #ededed 5%, #bab1ba 100%);
-  border-radius: 15px;
-  border: 1px solid #d6bcd6;
-  /* display: inline-block; */
   cursor: pointer;
-  color: lightslategray;
-  /* font-family: Arial; */
   font-size: 14px;
-  padding: 0px 5px;
   text-decoration: none;
   text-shadow: 0px 1px 0px #e1e2ed;
+  background: none;
 }
+
 .delete_btn:hover {
   background: linear-gradient(to bottom, #bab1ba 5%, #ededed 100%);
   background-color: #bab1ba;
 }
+
 .delete_btn:active {
   position: relative;
   top: 1px;
@@ -231,12 +292,14 @@ body {
   right: 7px;
   float: right;
   padding: 4px 0 0 10px;
+  background: inherit;
 }
 
 .notes_view_updates {
   font-style: italic;
   font-size: 12px;
   font-weight: 100;
+  background: inherit;
 }
 
 .note_mark_date {
@@ -246,14 +309,13 @@ body {
   gap: 195px;
   top: 48px;
   align-items: center;
+  background-color: inherit;
 }
 
 .notes_preview {
   display: flex;
   flex-direction: column;
-  padding: 2em 3em;
-  flex-grow: 1;
-  background: #efeeee;
+  padding: 2em;
 }
 
 .logo_title {
@@ -264,8 +326,8 @@ body {
 
 #heading_btn {
   display: inline-flex;
-  column-gap: 35rem;
-  margin-bottom: 35px;
+  column-gap: 43rem;
+  margin-bottom: 50px;
 }
 #heading_btn,
 img {
@@ -282,6 +344,7 @@ h1 {
   padding-left: 0px;
   color: white;
   font-size: 20px;
+  background: none;
 }
 
 .notes_title,
@@ -291,12 +354,8 @@ h1 {
   border-radius: 10px;
   outline: none;
   width: 100%;
-  background: linear-gradient(
-    -45deg,
-    rgba(0, 0, 0, 0.22),
-    rgba(255, 255, 255, 0.25)
-  );
-  box-shadow: 12px 12px 16px 0 rgba(0, 0, 0, 0.25),
+  background: #f7f9f7;
+  box-shadow: 8px 8px 16px 0 rgba(0, 0, 0, 0.25),
     -8px -8px 12px 0 rgba(255, 255, 255, 0.3);
 }
 
@@ -313,14 +372,41 @@ h1 {
   resize: none;
 }
 
+/* Dark theme started  */
+
 .darkMode * {
-  font-family: sans-serif;
+  font-family: "Comic Neue", cursive;
   background-color: #222f3e;
   color: white;
 }
+
 .darkMode .search_box {
   box-shadow: -1px -1px 10px -4px white, 2px 2px 29px -5px black;
 }
+
+.darkMode .search_box > .fa-magnifying-glass {
+  padding-left: 13px;
+  color: lightgray;
+  border-radius: 15px;
+  background-color: inherit;
+}
+
+.darkMode #search_notes {
+  background-color: inherit;
+}
+
+.darkMode #bookmarkIcons {
+  background: inherit;
+}
+
+.darkMode #regular_bookmark {
+  background: inherit;
+}
+
+.darkMode .edit_button_div_class {
+  background: inherit;
+}
+
 .darkMode .add_notes_btn {
   box-shadow: 3px 4px 0px 0px #0a4087;
   background: linear-gradient(to bottom, #275da6 5%, #4b78b2 100%);
@@ -368,17 +454,11 @@ h1 {
   border-radius: 10px;
   outline: none;
   width: 100%;
+  box-shadow: 7px 7px 9px 0 rgb(0 0 0 / 25%),
+    2px 2px 3px 0 rgb(255 255 255 / 30%);
 }
-.darkMode .notes_title,
-.notes_body::placeholder {
-  /* color: white; */
-}
+
 .darkMode .notes_list_items {
-  /* border-radius: 7px;
-  border: 1px solid lightgray;
-  font-weight: bold;
-  margin-top: 15px;
-  height: 8rem;
-  box-shadow: 7px 7px 12px 0 rgb(0 0 0 / 25%),
-    -1px -1px 0px 0 rgb(255 255 255 / 30%); */
+  box-shadow: 7px 7px 9px 0 rgb(0 0 0 / 25%),
+    2px 2px 3px 0 rgb(255 255 255 / 30%);
 }
