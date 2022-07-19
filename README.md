@@ -1,6 +1,6 @@
 # -Note Keep
 
-## VERSION-01
+### VERSION-01
 
 ##### -User should be able to write the text to maintain the notes.
 
@@ -10,7 +10,8 @@
 
 ##### -User should be able to edit the notes.
 
-## VERSION-02
+
+### VERSION-02
 
 ##### -Note should contain title.
 
@@ -20,7 +21,8 @@
 
 ##### -User should be able to delete the notes.
 
-## VERSION-03
+
+### VERSION-03
 
 ##### -Add search button to search notes using keywords.
 
