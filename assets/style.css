@@ -59,7 +59,6 @@ body {
 }
 
 #add_note_text {
-  color: silver;
   text-align: center;
   font-size: 1.5rem;
 }
@@ -67,28 +66,6 @@ body {
 #bookmarkIcons {
   background-color: ghostwhite;
 }
-
-/* 
-#bookmarkIcons {
-  box-shadow: 2px 3px 0px 0px #899599;
-  background: linear-gradient(to bottom, #ededed 5%, #bab1ba 100%);
-  border-radius: 15px;
-  border: 1px solid #d6bcd6;
-  cursor: pointer;
-  color: lightslategray;
-  font-size: 14px;
-  padding: 0px 4px;
-  text-decoration: none;
-  text-shadow: 0px 1px 0px #e1e2ed;
-}
-#bookmarkIcons:hover {
-  background: linear-gradient(to bottom, #bab1ba 5%, #ededed 100%);
-  background-color: #bab1ba;
-}
-#bookmarkIcons:active {
-  position: relative;
-  top: 1px;
-} */
 
 #regular_bookmark {
   background-color: ghostwhite;
@@ -142,6 +119,7 @@ body {
   text-decoration: none;
   text-shadow: 0px 1px 0px #132d50;
 }
+
 .add_notes_btn:hover {
   background: linear-gradient(to bottom, #277ae8 5%, #2e5e9d 100%);
   background-color: #04387d;
@@ -246,7 +224,11 @@ body {
 }
 
 .edit_button_div_class {
-  /* background-color: inherit; */
+  background-color: ghostwhite;
+}
+
+.delete_button_div_class {
+  background-color: ghostwhite;
 }
 
 .edit_btn {
@@ -404,6 +386,10 @@ h1 {
 }
 
 .darkMode .edit_button_div_class {
+  background: inherit;
+}
+
+.darkMode .delete_button_div_class {
   background: inherit;
 }
 

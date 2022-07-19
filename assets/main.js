@@ -107,11 +107,10 @@ function addNoteToScreen(title, description, id) {
   document.getElementById("add_note_text").style.display = "none";
   const divElem = document.createElement("div");
   divElem.id = id;
-  // edit button operation
 
+  // edit button operation
   let editButtonDiv = document.createElement("div");
   editButtonDiv.className = "edit_button_div_class";
-  editButtonDiv.style.backgroundColor = "ghostwhite";
   editButtonDiv.innerHTML = `<i class="edit_btn fa-regular fa-pen-to-square"></i>`;
   editButtonDiv.addEventListener("click", () => {
     return editNote(title, description, id);
@@ -120,8 +119,7 @@ function addNoteToScreen(title, description, id) {
 
   // delete button operation
   let deleteButtonDiv = document.createElement("div");
-  deleteButtonDiv.style.backgroundColor = "ghostwhite";
-
+  deleteButtonDiv.classList = "delete_button_div_class";
   deleteButtonDiv.innerHTML = `<i class="delete_btn fa-regular fa-trash-can"></i>`;
   deleteButtonDiv.addEventListener("click", () => {
     return deleteNote(id);
@@ -284,6 +282,8 @@ function darkMode() {
   regularBookmark.classList.toggle("darkMode");
   const editBtn = document.querySelector(".edit_button_div_class");
   editBtn.classList.toggle("darkMode");
+  const deleteBtn = document.querySelector(".delete_button_div_class");
+  deleteBtn.classList.toggle("darkMode");
   const noteCard = document.querySelector(".notes_list_items");
   noteCard.classList.toggle("darkMode");
   // const addBtn = document.getElementById("add_btn");
