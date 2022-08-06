@@ -35,3 +35,11 @@
 ##### -Add bookmark button.
 
 ##### -User should be able to see all bookmarked note together.
+
+
+# -Wireframe Layout
+
+![Wirefram_layout](https://user-images.githubusercontent.com/99025474/183260181-e47d17a7-283a-488c-8ef6-299c5ec02a8f.png)
+
+
+
