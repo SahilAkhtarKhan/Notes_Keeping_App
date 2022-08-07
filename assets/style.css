@@ -43,9 +43,6 @@ body {
   height: 100%;
   margin: 0;
   font-family: "Comic Neue", cursive;
-  /* font-family: "Lato", sans-serif; */
-  /* font-family: "Open Sans", sans-serif; */
-  /* font-family: "Roboto", sans-serif; */
 }
 * {
   font-family: "Comic Neue", cursive;
@@ -55,7 +52,6 @@ body {
 .notes_container {
   display: flex;
   height: 100%;
-  /* background-color: cadetblue; */
 }
 
 #add_note_text {
@@ -435,7 +431,6 @@ h1 {
 
 .darkMode .notes_title,
 .notes_body {
-  /* border: none; */
   padding: 15px;
   border-radius: 10px;
   outline: none;
